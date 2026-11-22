@@ -6,7 +6,10 @@
     <!-- SUBSTITUIR AQUI: O teu nome completo no título do separador do navegador -->
     <title>João Gomes Santos | Energia e Ambiente</title>
     <meta name="description" content="Portfólio académico e profissional focado em transição energética, sustentabilidade e engenharia ambiental.">
-    
+
+    <!-- Favicon apontando para o ficheiro Logo-Pessoal.png -->
+    <link rel="icon" type="image/png" href="Logo-Pessoal.png">
+
     <!-- Google Fonts: Plus Jakarta Sans (títulos) e Inter (corpo de texto) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +32,7 @@
             --badge-text: #1B4332;
             --border-color: #E2E8F0;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 12px 20px -6px rgba(27, 67, 50, 0.14), 0 4px 8px -4px rgba(0, 0, 0, 0.06);
             --transition: all 0.25s ease;
         }
 
@@ -45,12 +49,13 @@
             --badge-text: #74C69D;
             --border-color: #334155;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 12px 20px -6px rgba(0, 0, 0, 0.45), 0 4px 8px -4px rgba(64, 145, 108, 0.18);
         }
 
         /* ==========================================================================
            2. ESTILOS BASE E TIPOGRAFIA
            ========================================================================== */
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -116,7 +121,7 @@
         }
 
         /* ==========================================================================
-           3. BARRA DE NAVEGAÇÃO
+           3. BARRA DE NAVEGAÇÃO E LOGÓTIPO
            ========================================================================== */
         header {
             position: sticky;
@@ -136,16 +141,27 @@
         }
 
         .nav-brand {
-            font-weight: 700;
-            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
             color: var(--text-main);
-            letter-spacing: -0.02em;
+            transition: var(--transition);
+        }
+
+        .nav-brand:hover {
+            opacity: 0.88;
+        }
+
+        .brand-logo {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1.75rem;
+            gap: 1.5rem;
         }
 
         .nav-links a {
@@ -240,6 +256,7 @@
             border-radius: 0.5rem;
             font-size: 0.92rem;
             font-weight: 600;
+            font-family: 'Inter', sans-serif;
             transition: var(--transition);
             cursor: pointer;
         }
@@ -266,6 +283,12 @@
             border-color: var(--accent);
             color: var(--accent);
             transform: translateY(-1px);
+        }
+
+        .btn.copied {
+            border-color: var(--accent);
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
         }
 
         .hero-photo-wrapper {
@@ -328,7 +351,8 @@
 
         .project-card:hover {
             border-color: var(--accent);
-            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
         }
 
         .project-tag {
@@ -352,8 +376,8 @@
             font-size: 0.92rem;
         }
 
-        .project-detail:last-child {
-            margin-bottom: 0;
+        .project-detail:last-of-type {
+            margin-bottom: 1.35rem;
         }
 
         .project-detail strong {
@@ -367,6 +391,23 @@
 
         .project-detail span {
             color: var(--text-muted);
+        }
+
+        .project-cta {
+            margin-top: auto;
+            padding-top: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-cta {
+            color: var(--accent-hover);
         }
 
         /* ==========================================================================
@@ -409,7 +450,51 @@
         }
 
         /* ==========================================================================
-           8. CONTACTO E RODAPÉ (GET IN TOUCH)
+           8. CERTIFICAÇÕES, EVENTOS & VOLUNTARIADO (EXPERIENCE & CERTIFICATIONS)
+           ========================================================================== */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .experience-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            transition: var(--transition);
+        }
+
+        .experience-card:hover {
+            border-color: var(--accent);
+        }
+
+        .experience-meta {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .experience-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .experience-org {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           9. CONTACTO E RODAPÉ (GET IN TOUCH)
            ========================================================================== */
         footer {
             padding: 4rem 0 3rem;
@@ -442,13 +527,15 @@
         }
 
         /* ==========================================================================
-           9. RESPONSIVIDADE (TELEMÓVEL E TABLET)
+           10. RESPONSIVIDADE (TELEMÓVEL E TABLET)
            ========================================================================== */
-        @media (max-width: 768px) {
+        @media (max-width: 860px) {
             .nav-links a {
                 display: none;
             }
+        }
 
+        @media (max-width: 768px) {
             .hero {
                 padding: 3.5rem 0;
             }
@@ -480,17 +567,19 @@
 <body>
 
     <!-- ======================================================================
-         BARRA DE NAVEGAÇÃO FIXA
+         BARRA DE NAVEGAÇÃO FIXA E LOGÓTIPO
          ====================================================================== -->
     <header>
         <div class="container nav-container">
-            <!-- SUBSTITUIR AQUI: As tuas iniciais ou primeiro e último nome -->
-            <a href="#" class="nav-brand">J.G.S.</a>
+            <a href="#" class="nav-brand" aria-label="João Gomes Santos, Início">
+                <img src="Logo-Pessoal.png" alt="Logótipo pessoal de João Gomes Santos" class="brand-logo">
+            </a>
             
             <nav class="nav-links" aria-label="Navegação principal">
                 <a href="#about">About Me</a>
                 <a href="#projects">Academic Projects</a>
                 <a href="#skills">Technical Skills</a>
+                <a href="#experience">Experience &amp; Certifications</a>
                 <a href="#contact">Get in Touch</a>
                 
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro ou escuro" title="Alternar tema">
@@ -531,11 +620,11 @@
                             LinkedIn
                         </a>
                         
-                        <!-- SUBSTITUIR AQUI: O teu endereço de e-mail -->
-                        <a href="mailto:joaopedrogomesantos@gmail.com" class="btn btn-secondary">
+                        <!-- Botão inteligente para copiar o endereço de e-mail -->
+                        <button type="button" class="btn btn-secondary copy-email-btn" data-email="joaopedrogomesantos@gmail.com" aria-label="Copiar endereço de e-mail">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Email
-                        </a>
+                            <span class="copy-email-label">Copiar Email</span>
+                        </button>
                         
                         <!-- SUBSTITUIR AQUI: Carrega o teu ficheiro PDF no GitHub com o nome 'cv.pdf' e este botão funcionará automaticamente -->
                         <a href="cv.pdf" download class="btn btn-secondary">
@@ -588,8 +677,8 @@
 
                 <div class="projects-grid">
                     <!-- PROJETO 1 -->
-                    <!-- SUBSTITUIR AQUI: Dados do teu primeiro projeto -->
-                    <article class="project-card">
+                    <!-- SUBSTITUIR AQUI: Garante que o ficheiro 'projeto-coimbra.pdf' está carregado na raiz do repositório -->
+                    <a href="projeto-coimbra.pdf" target="_blank" rel="noopener noreferrer" class="project-card">
                         <span class="project-tag">Qualidade do AR &amp; Sustentabilidade Urbana</span>
                         <h3 class="project-title">Análise da Qualidade do Ar na cidade de Coimbra</h3>
                         
@@ -607,11 +696,15 @@
                             <strong>Principais Resultados</strong>
                             <span>Mapeamento dos principais focos de emissão (tráfego rodoviário e zonas críticas) e elaboração de um plano de mitigação focado na mobilidade sustentável e redução de poluentes urbanos.</span>
                         </div>
-                    </article>
+
+                        <div class="project-cta">
+                            <span>Ver Apresentação (PDF) ↗</span>
+                        </div>
+                    </a>
 
                     <!-- PROJETO 2 -->
-                    <!-- SUBSTITUIR AQUI: Dados do teu segundo projeto -->
-                    <article class="project-card">
+                    <!-- SUBSTITUIR AQUI: Garante que o ficheiro 'projeto-etar.pdf' está carregado na raiz do repositório -->
+                    <a href="projeto-etar.pdf" target="_blank" rel="noopener noreferrer" class="project-card">
                         <span class="project-tag">Wastewater Treatment &amp; Hydraulic Design</span>
                         <h3 class="project-title">Anteprojeto de uma ETAR em Vila Fernando (Guarda)</h3>
                         
@@ -629,11 +722,15 @@
                             <strong>Principais Resultados</strong>
                             <span>Definição da linha de tratamento (preliminar, primário e secundário), cálculo dos órgãos principais e garantia de conformidade com os valores limite de emissão (VLE) para descarga segura no meio recetor.</span>
                         </div>
-                    </article>
+
+                        <div class="project-cta">
+                            <span>Ver Apresentação (PDF) ↗</span>
+                        </div>
+                    </a>
 
                     <!-- PROJETO 3 -->
-                    <!-- SUBSTITUIR AQUI: Dados do teu terceiro projeto -->
-                    <article class="project-card">
+                    <!-- SUBSTITUIR AQUI: Garante que o ficheiro 'projeto-sga.pdf' está carregado na raiz do repositório -->
+                    <a href="projeto-sga.pdf" target="_blank" rel="noopener noreferrer" class="project-card">
                         <span class="project-tag">Environmental Management &amp; ISO 14001</span>
                         <h3 class="project-title">Sistema de Gestão Ambiental na ESTG — UPG</h3>
                         
@@ -651,7 +748,11 @@
                             <strong>Principais Resultados</strong>
                             <span>Levantamento inicial e diagnóstico ambiental das instalações, definição de política ambiental, estabelecimento de objetivos/metas de redução de consumos e plano de monitorização e auditoria interna.</span>
                         </div>
-                    </article>
+
+                        <div class="project-cta">
+                            <span>Ver Apresentação (PDF) ↗</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -695,11 +796,50 @@
                         <h3 class="skill-group-title">Normas &amp; Sustentabilidade</h3>
                         <div class="badges-list">
                             <span class="badge">Life Cycle Assessment (LCA)</span>
-                            <span class="badge">ISO 14001 &amp; ISO 50001&amp; ISO 9001</span>
+                            <span class="badge">ISO 14001 &amp; ISO 50001 &amp; ISO 9001</span>
                             <span class="badge">Auditorias Energéticas</span>
                             <span class="badge">Economia Circular</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECÇÃO CERTIFICAÇÕES, EVENTOS & VOLUNTARIADO
+             ================================================================== -->
+        <section id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow">Experience &amp; Certifications</span>
+                    <h2 class="section-title">Certificações, Eventos e Voluntariado</h2>
+                </div>
+
+                <div class="experience-grid">
+                    <!-- SUBSTITUIR AQUI: Ajusta datas ou detalhes adicionais caso pretendas -->
+                    <article class="experience-card">
+                        <span class="experience-meta">Organização Académica</span>
+                        <h3 class="experience-title">Organização do Seminário “Energia, Ambiente e Recursos Hídricos”</h3>
+                        <p class="experience-org">ESTG, UPG (Guarda)</p>
+                    </article>
+
+                    <article class="experience-card">
+                        <span class="experience-meta">Abr 2026 • Certificação</span>
+                        <h3 class="experience-title">Certificação "Circular Horizons: CE&amp;E Research Talks"</h3>
+                        <p class="experience-org">UNITA, Universitas Montium</p>
+                    </article>
+
+                    <article class="experience-card">
+                        <span class="experience-meta">Set 2025 – Jan 2026 • Voluntariado</span>
+                        <h3 class="experience-title">Estudante Voluntário no Banco Alimentar Contra a Fome</h3>
+                        <p class="experience-org">Ação Social e Apoio Comunitário</p>
+                    </article>
+
+                    <article class="experience-card">
+                        <span class="experience-meta">Seminários e Fóruns</span>
+                        <h3 class="experience-title">Seminário "Incêndios na Serra da Estrela" &amp; 3.ª Edição do Fórum de Empregabilidade</h3>
+                        <p class="experience-org">Clubes Rotários da Beira Serra &amp; UPG</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -718,7 +858,9 @@
             
             <div class="footer-links">
                 <!-- SUBSTITUIR AQUI: Os teus contactos diretos -->
-                <a href="mailto:joaopedrogomesantos@gmail.com" class="btn btn-primary">joaopedrogomesantos@gmail.com</a>
+                <button type="button" class="btn btn-primary copy-email-btn" data-email="joaopedrogomesantos@gmail.com" aria-label="Copiar endereço de e-mail">
+                    <span class="copy-email-label">joaopedrogomesantos@gmail.com</span>
+                </button>
                 <a href="https://www.linkedin.com/in/jo%C3%A3o-gomes-santos-9129a2374/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Perfil LinkedIn</a>
             </div>
             
@@ -728,7 +870,7 @@
     </footer>
 
     <!-- ======================================================================
-         JAVASCRIPT PARA GESTÃO DE TEMA (LIGHT / DARK MODE)
+         JAVASCRIPT PARA GESTÃO DE TEMA E CÓPIA DE EMAIL
          ====================================================================== -->
     <script>
         (function() {
@@ -762,6 +904,47 @@
                 currentTheme = currentTheme === 'light' ? 'dark' : 'light';
                 applyTheme(currentTheme);
                 localStorage.setItem('portfolio-theme', currentTheme);
+            });
+
+            // 4. Botão inteligente de copiar email com feedback durante 2 segundos
+            const copyButtons = document.querySelectorAll('.copy-email-btn');
+            copyButtons.forEach((btn) => {
+                const labelEl = btn.querySelector('.copy-email-label');
+                const originalText = labelEl ? labelEl.textContent : btn.textContent;
+                const emailAddress = btn.getAttribute('data-email') || 'joaopedrogomesantos@gmail.com';
+                let resetTimer = null;
+
+                btn.addEventListener('click', async () => {
+                    try {
+                        if (navigator.clipboard && window.isSecureContext) {
+                            await navigator.clipboard.writeText(emailAddress);
+                        } else {
+                            const tempInput = document.createElement('input');
+                            tempInput.value = emailAddress;
+                            document.body.appendChild(tempInput);
+                            tempInput.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(tempInput);
+                        }
+                    } catch (err) {
+                        // Mantém feedback visual mesmo em contextos restritos do navegador
+                    }
+
+                    if (labelEl) {
+                        labelEl.textContent = 'Email copiado!';
+                    }
+                    btn.classList.add('copied');
+
+                    if (resetTimer) {
+                        clearTimeout(resetTimer);
+                    }
+                    resetTimer = setTimeout(() => {
+                        if (labelEl) {
+                            labelEl.textContent = originalText;
+                        }
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
             });
         })();
     </script>
