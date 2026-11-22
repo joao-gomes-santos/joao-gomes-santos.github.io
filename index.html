@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SUBSTITUIR AQUI: O teu nome completo no título do separador do navegador -->
+    <title>Nome Apelido | Engenharia da Energia e do Ambiente</title>
+    <meta name="description" content="Portfólio académico e profissional focado em transição energética, sustentabilidade e engenharia ambiental.">
+    
+    <!-- Google Fonts: Plus Jakarta Sans (títulos) e Inter (corpo de texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS CSS E PALETA DE CORES (LIGHT & DARK MODE)
+           ========================================================================== */
+        :root {
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --bg-nav: rgba(248, 250, 252, 0.85);
+            --text-main: #1E293B;
+            --text-muted: #475569;
+            --primary: #1B4332;
+            --accent: #2D6A4F;
+            --accent-hover: #1B4332;
+            --badge-bg: #E6F0EC;
+            --badge-text: #1B4332;
+            --border-color: #E2E8F0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.25s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0F172A;
+            --bg-card: #1E293B;
+            --bg-nav: rgba(15, 23, 42, 0.85);
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --primary: #40916C;
+            --accent: #40916C;
+            --accent-hover: #52B788;
+            --badge-bg: rgba(64, 145, 108, 0.15);
+            --badge-text: #74C69D;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ==========================================================================
+           2. ESTILOS BASE E TIPOGRAFIA
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.65;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, .nav-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.25;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .section-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* ==========================================================================
+           3. BARRA DE NAVEGAÇÃO
+           ========================================================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--bg-nav);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.25rem;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 2.35rem;
+            height: 2.35rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ==========================================================================
+           4. SECÇÃO HERO (APRESENTAÇÃO)
+           ========================================================================== */
+        .hero {
+            padding: 5.5rem 0 5rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.1rem, 4vw, 2.85rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-summary {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.35rem;
+            border-radius: 0.5rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .hero-photo-wrapper {
+            width: 220px;
+            height: 220px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow);
+            background-color: var(--bg-card);
+            flex-shrink: 0;
+        }
+
+        .hero-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ==========================================================================
+           5. SOBRE MIM (ABOUT ME)
+           ========================================================================== */
+        .about-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==========================================================================
+           6. PROJETOS ACADÉMICOS (ACADEMIC PROJECTS)
+           ========================================================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .project-detail {
+            margin-bottom: 1rem;
+            font-size: 0.92rem;
+        }
+
+        .project-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-detail strong {
+            display: block;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-main);
+            margin-bottom: 0.2rem;
+        }
+
+        .project-detail span {
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           7. COMPETÊNCIAS E FERRAMENTAS (TECHNICAL SKILLS)
+           ========================================================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-group-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .badges-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 0.84rem;
+            font-weight: 500;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.4rem;
+        }
+
+        /* ==========================================================================
+           8. CONTACTO E RODAPÉ (GET IN TOUCH)
+           ========================================================================== */
+        footer {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.65rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           9. RESPONSIVIDADE (TELEMÓVEL E TABLET)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .nav-links a {
+                display: none;
+            }
+
+            .hero {
+                padding: 3.5rem 0;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-photo-wrapper {
+                order: -1;
+                margin: 0 auto;
+                width: 170px;
+                height: 170px;
+            }
+
+            .hero-summary {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================================================================
+         BARRA DE NAVEGAÇÃO FIXA
+         ====================================================================== -->
+    <header>
+        <div class="container nav-container">
+            <!-- SUBSTITUIR AQUI: As tuas iniciais ou primeiro e último nome -->
+            <a href="#" class="nav-brand">J.G.S.</a>
+            
+            <nav class="nav-links" aria-label="Navegação principal">
+                <a href="#about">About Me</a>
+                <a href="#projects">Academic Projects</a>
+                <a href="#skills">Technical Skills</a>
+                <a href="#contact">Get in Touch</a>
+                
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro ou escuro" title="Alternar tema">
+                    <!-- Ícone de Lua (mostrado no modo claro) -->
+                    <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <!-- Ícone de Sol (mostrado no modo escuro) -->
+                    <svg id="iconSun" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================================================================
+             SECÇÃO HERO (APRESENTAÇÃO)
+             ================================================================== -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <!-- SUBSTITUIR AQUI: Estado atual (ex: Disponível para Estágio Curricular / Profissional) -->
+                    <span class="hero-badge">Aberto a Oportunidades • Energy &amp; Sustainability</span>
+                    
+                    <!-- SUBSTITUIR AQUI: O teu Nome Completo -->
+                    <h1 class="hero-title">João Pedro Gomes Santos</h1>
+                    
+                    <!-- SUBSTITUIR AQUI: O teu Curso e Instituição -->
+                    <p class="hero-subtitle">Estudante de Energia e Ambiente na UPG</p>
+                    
+                    <!-- SUBSTITUIR AQUI: Resumo curto de 2 frases focado em impacto e transição energética -->
+                    <p class="hero-summary">
+                        Focado no desenvolvimento de soluções técnicas para a descarbonização, eficiência energética e gestão sustentável de recursos. Combino análise de dados e modelação ambiental para apoiar a transição energética no contexto industrial e urbano.
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <!-- SUBSTITUIR AQUI: O link real do teu perfil LinkedIn -->
+                        <a href="https://https://www.linkedin.com/in/jo%C3%A3o-gomes-santos-9129a2374" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            LinkedIn
+                        </a>
+                        
+                        <!-- SUBSTITUIR AQUI: O teu endereço de e-mail -->
+                        <a href="mailto:joaopedrogomesantos@gmail.com" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            Email
+                        </a>
+                        
+                        <!-- SUBSTITUIR AQUI: Carrega o teu ficheiro PDF no GitHub com o nome 'cv.pdf' e este botão funcionará automaticamente -->
+                        <a href="cv.pdf" download class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-photo-wrapper">
+                    <!-- SUBSTITUIR AQUI: 
+                         1. Guarda a tua fotografia na mesma pasta do ficheiro index.html com o nome 'perfil.jpg'.
+                         2. Substitui o link 'https://placehold.co/...' abaixo por 'perfil.jpg'. -->
+                    <img src="https://placehold.co/440x440/1B4332/FFFFFF?text=Foto+de+Perfil" alt="Fotografia de perfil de Nome Apelido">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECÇÃO SOBRE MIM (ABOUT ME)
+             ================================================================== -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow">About Me</span>
+                    <h2 class="section-title">Perfil Académico e Motivação</h2>
+                </div>
+                
+                <div class="about-card">
+                    <!-- SUBSTITUIR AQUI: A tua apresentação pessoal (2 parágrafos curtos e objetivos) -->
+                    <p>
+                        Encontro-me atualmente a concluir a licenciatura na área da Energia e do Ambiente, onde tenho aprofundado conhecimentos em sistemas de energias renováveis, termodinâmica aplicada, avaliação de impacte ambiental e gestão de resíduos.
+                    </p>
+                    <p>
+                        O meu principal interesse passa por integrar equipas multidisciplinares dedicadas a projetos de eficiência energética, <em>Life Cycle Assessment</em> (LCA) e consultoria ambiental, transformando dados técnicos em decisões mensuráveis para a sustentabilidade empresarial.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECÇÃO PROJETOS ACADÉMICOS (ACADEMIC PROJECTS)
+             ================================================================== -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow">Academic Projects</span>
+                    <h2 class="section-title">Projetos Académicos e Técnicos</h2>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- PROJETO 1 -->
+                    <!-- SUBSTITUIR AQUI: Dados do teu primeiro projeto -->
+                    <article class="project-card">
+                        <span class="project-tag">Qualidade do AR &amp; Sustentabilidade Urbana</span>
+                        <h3 class="project-title">Análise da Qualidade do Ar na cidade de Coimbra</h3>
+                        
+                        <div class="project-detail">
+                            <strong>Problema / Objetivo</strong>
+                            <span>Diagnosticar a qualidade do ar na malha urbana de Coimbra, identificando as principais fontes de poluição atmosférica e avaliando os seus impactos para propor medidas práticas de mitigação.</span>
+                        </div>
+                        
+                        <div class="project-detail">
+                            <strong>Ferramentas Utilizadas</strong>
+                            <span>Microsoft Excel (análise de dados), QGIS / Mapeamento e bases de dados ambientais (ex: QualAr / APA).</span>
+                        </div>
+                        
+                        <div class="project-detail">
+                            <strong>Principais Resultados</strong>
+                            <span>Mapeamento dos principais focos de emissão (tráfego rodoviário e zonas críticas) e elaboração de um plano de mitigação focado na mobilidade sustentável e redução de poluentes urbanos.</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJETO 2 -->
+                    <!-- SUBSTITUIR AQUI: Dados do teu segundo projeto -->
+                    <article class="project-card">
+                        <span class="project-tag">Wastewater Treatment &amp; Hydraulic Design</span>
+                        <h3 class="project-title">Anteprojeto de uma ETAR em Vila Fernando (Guarda)</h3>
+                        
+                        <div class="project-detail">
+                            <strong>Problema / Objetivo</strong>
+                            <span>Desenvolver o estudo técnico e o dimensionamento preliminar de uma Estação de Tratamento de Águas Residuais (ETAR) adaptada às necessidades demográficas e ambientais da freguesia de Vila Fernando.</span>
+                        </div>
+                        
+                        <div class="project-detail">
+                            <strong>Ferramentas Utilizadas</strong>
+                            <span>Microsoft Excel (cálculos de dimensionamento e caudais), Esquemas de processo e legislação ambiental aplicável.</span>
+                        </div>
+                        
+                        <div class="project-detail">
+                            <strong>Principais Resultados</strong>
+                            <span>Definição da linha de tratamento (preliminar, primário e secundário), cálculo dos órgãos principais e garantia de conformidade com os valores limite de emissão (VLE) para descarga segura no meio recetor.</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJETO 3 -->
+                    <!-- SUBSTITUIR AQUI: Dados do teu terceiro projeto -->
+                    <article class="project-card">
+                        <span class="project-tag">Environmental Management &amp; ISO 14001</span>
+                        <h3 class="project-title">Sistema de Gestão Ambiental na ESTG — UPG</h3>
+                        
+                        <div class="project-detail">
+                            <strong>Problema / Objetivo</strong>
+                            <span>Estruturar uma proposta académica de Sistema de Gestão Ambiental (SGA) para a Escola Superior de Tecnologia e Gestão (ESTG), visando identificar aspetos ambientais significativos e promover a melhoria contínua da sustentabilidade no campus.</span>
+                        </div>
+                        
+                        <div class="project-detail">
+                            <strong>Ferramentas Utilizadas</strong>
+                            <span>Norma NP EN ISO 14001, matrizes de avaliação de aspetos e impactes ambientais, levantamento de consumos (energia, água e resíduos) e Microsoft Excel.</span>
+                        </div>
+                        
+                        <div class="project-detail">
+                            <strong>Principais Resultados</strong>
+                            <span>Levantamento inicial e diagnóstico ambiental das instalações, definição de política ambiental, estabelecimento de objetivos/metas de redução de consumos e plano de monitorização e auditoria interna.</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECÇÃO COMPETÊNCIAS E FERRAMENTAS (TECHNICAL SKILLS)
+             ================================================================== -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow">Technical Skills</span>
+                    <h2 class="section-title">Competências e Ferramentas</h2>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- CATEGORIA 1 -->
+                    <!-- SUBSTITUIR AQUI: Os teus softwares técnicos -->
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Software Técnico, CAD &amp; GIS</h3>
+                        <div class="badges-list">
+                            <span class="badge">QGIS / ArcGIS</span>
+                            <span class="badge">QualAr (APA)</span>
+                            <span class="badge">OpenLCA</span>
+                            <span class="badge">SNIRH</span>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORIA 2 -->
+                    <!-- SUBSTITUIR AQUI: Ferramentas de análise de dados e programação -->
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Análise de Dados &amp; Programação</h3>
+                        <div class="badges-list">
+                            <span class="badge">Microsoft Excel (Avançado)</span>
+                            <span class="badge">MS Project</span>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORIA 3 -->
+                    <!-- SUBSTITUIR AQUI: Normas, regulamentação e conceitos de sustentabilidade -->
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Normas &amp; Sustentabilidade</h3>
+                        <div class="badges-list">
+                            <span class="badge">Life Cycle Assessment (LCA)</span>
+                            <span class="badge">ISO 14001 &amp; ISO 50001&amp; ISO 9001</span>
+                            <span class="badge">Auditorias Energéticas</span>
+                            <span class="badge">Economia Circular</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         RODAPÉ E CONTACTO (GET IN TOUCH)
+         ====================================================================== -->
+    <footer id="contact">
+        <div class="container">
+            <span class="section-eyebrow">Get in Touch</span>
+            <h2 class="footer-title">Vamos Conversar</h2>
+            <p class="footer-text">
+                Disponível para oportunidades de estágio, projetos de investigação ou colaboração nas áreas de energia, ambiente e sustentabilidade empresarial.
+            </p>
+            
+            <div class="footer-links">
+                <!-- SUBSTITUIR AQUI: Os teus contactos diretos -->
+                <a href="mailto:joaopedrogomesantos@gmail.com" class="btn btn-primary">joaopedrogomesantos@gmail.com</a>
+                <a href="https://www.linkedin.com/in/jo%C3%A3o-gomes-santos-9129a2374/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Perfil LinkedIn</a>
+            </div>
+            
+            <!-- SUBSTITUIR AQUI: O teu nome no rodapé -->
+            <p class="copyright">&copy; 2026 João Gomes Santos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         JAVASCRIPT PARA GESTÃO DE TEMA (LIGHT / DARK MODE)
+         ====================================================================== -->
+    <script>
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const iconMoon = document.getElementById('iconMoon');
+            const iconSun = document.getElementById('iconSun');
+            const htmlElement = document.documentElement;
+
+            // 1. Verificar preferência guardada ou preferência do sistema operativo
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            let currentTheme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+
+            // 2. Aplicar tema inicial e atualizar ícones
+            function applyTheme(theme) {
+                htmlElement.setAttribute('data-theme', theme);
+                if (theme === 'dark') {
+                    iconMoon.style.display = 'none';
+                    iconSun.style.display = 'block';
+                } else {
+                    iconMoon.style.display = 'block';
+                    iconSun.style.display = 'none';
+                }
+            }
+
+            applyTheme(currentTheme);
+
+            // 3. Alternar tema ao clicar no botão e guardar no navegador
+            themeToggle.addEventListener('click', () => {
+                currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(currentTheme);
+                localStorage.setItem('portfolio-theme', currentTheme);
+            });
+        })();
+    </script>
+</body>
+</html>
